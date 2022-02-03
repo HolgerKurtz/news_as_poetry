@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Wiki AI</title>
+</head>
+
+<body>
+    <header>
+        <h1>The World according to an AI.</h1>
+        <p>Like Wikipedia but an AI creates the article on the go.</p>
+    </header>
+
+    <form method="post">
+        <label for="user_input">Search</label>
+        <input type="text" name="user_input" placeholder="Leonardo da Vinci">
+        <input type="submit" value="Submit">
+    </form>
+    <main>
+        <h2> {{user_input}} </h2>
+        <p> {{ai_text_result}} </p>
+    </main>
+
+</body>
+
+<footer>
+    Made with love by holgerkurtz.de
+</footer>
+
+</html>
