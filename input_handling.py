@@ -1,5 +1,22 @@
 import json
 from poems_ai import ai_text
+import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+# Get most popular articles from NYT API
+# https://developer.nytimes.com/
+
+API_KEY = os.getenv("NYT_API_KEY")
+TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/home.json?api-key={API_KEY}"
+
+def get_news_from_nyt():
+    response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
+                            "Accept": "application/json"})
+    data = response.json()
+
+    return data['results'][0]
 
 
 def return_ai_result(news):
@@ -7,7 +24,7 @@ def return_ai_result(news):
         news_list = json.load(file)
 
     if news in news_list:
-        print(f"{news} is in der json-Datei")
+        print(f"{news} is in der json-Datei: {news_list.get(news)}")
     else:
         news_list[news] = ai_text(news)
         with open("news.json", "w+") as file:
@@ -17,4 +34,5 @@ def return_ai_result(news):
 
 
 if "__main__" == "__main__":
-    print(return_ai_result("What is the capital of France?"))
+    newest_news = get_news_from_nyt()
+    print(return_ai_result(newest_news.get("title")))

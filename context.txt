@@ -1,10 +1,33 @@
-The violin
+Write a poem:
 
-The violin, sometimes known as a fiddle, is a wooden chordophone (string instrument) in the violin family. Most violins have a hollow wooden body. It is the smallest and thus highest-pitched instrument (soprano) in the family in regular use.[a] The violin typically has four strings, (some can have five), usually tuned in perfect fifths with notes G3, D4, A4, E5, and is most commonly played by drawing a bow across its strings. It can also be played by plucking the strings with the fingers (pizzicato) and, in specialized cases, by striking the strings with the wooden side of the bow (col legno).
+Entire of itself, Every man is a piece of the continent, 
+A part of the main.
+If a clod be washed away by the sea, 
+Europe is the less.
+As well as if a promontory were.
+As well as if a manor of thy friend’s
+Or of thine own were:
+Any man’s death diminishes me,
+Because I am involved in mankind,
+And therefore never send to know for whom the bell tolls;
+It tolls for thee.
 
-London
+---
 
-London is the capital and largest city of England and the United Kingdom. It stands on the River Thames in south-east England at the head of a 50-mile (80 km) estuary down to the North Sea, and has been a major settlement for two millennia. The City of London, its ancient core and financial centre, was founded by the Romans as Londinium and retains boundaries close to its medieval ones.
+There will come soft rain and the smell of the ground,
+And swallows circling with their shimmering sound;
+And frogs in the pools singing at night,
+And wild plum trees in tremulous white;
+Robins will wear their feathery fire,
+Whistling their whims on a low fence-wire;
+And not one will know of the war, not one
+Will care at last when it is done.
+Not one would mind, neither bird nor tree,
+If mankind perished utterly;
+And Spring herself, when she woke at dawn
+Would scarcely know that we were gone.
 
-USER_INPUT
+---
+
+++NEWS++
 

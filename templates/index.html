@@ -6,28 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
-    <title>Wiki AI</title>
+    <title>News as Poems</title>
 </head>
 
 <body>
     <header>
-        <h1>The World according to an AI.</h1>
-        <p>Like Wikipedia but an AI creates the article on the go.</p>
+        <h1>News as Poems</h1>
+        <p>News are imporant, but Poems are importanter.</p>
     </header>
 
-    <form method="post">
-        <label for="user_input">Search</label>
-        <input type="text" name="user_input" placeholder="Leonardo da Vinci">
-        <input type="submit" value="Submit">
-    </form>
+
     <main>
-        <h2> {{user_input}} </h2>
-        <p> {{ai_text_result}} </p>
+        <section>
+            <figure>
+                <h2> {{newest_news.get('title')}} </h2>
+                <blockquote>
+                    {{news_poems}}
+                </blockquote>
+                <figcaption>
+                    <a href="{{newest_news.get('url')}}">{{newest_news.get('byline')}}</a>
+                </figcaption>
+            </figure>
+        </section>
+        <section>
+            <button>
+                <a href="http://twitter.com/share?text={{news_poems}}&url=http://holgerkurtz.de&hashtags=NewsAsPoems"
+                    target="_blank" rel="noopener noreferrer"> Share on Twitter</a>
+            </button>
+        </section>
     </main>
 
 </body>
 
 <footer>
+    News: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
     Made with love by holgerkurtz.de
 </footer>
 
