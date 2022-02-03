@@ -24,7 +24,7 @@ def return_ai_result(news):
         news_list = json.load(file)
 
     if news in news_list:
-        print(f"{news} is in der json-Datei: {news_list.get(news)}")
+        pass
     else:
         news_list[news] = ai_text(news)
         with open("news.json", "w+") as file:

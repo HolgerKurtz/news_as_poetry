@@ -15,13 +15,12 @@ def ai_text(news):
     with open("context.txt", "r") as file:
         context = file.read()
     input_with_context = context.replace("++NEWS++", news)
-    print(input_with_context)
+    
     result = openai.Completion.create(
         engine="text-davinci-001",
         temperature=0.9,
         prompt=input_with_context,
-        stop="\n---\n",
-        max_tokens=75
+        max_tokens=200
     )
     return result['choices'][0]['text']
 
