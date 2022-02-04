@@ -12,12 +12,12 @@ load_dotenv()
 API_KEY = os.getenv("NYT_API_KEY")
 TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/home.json?api-key={API_KEY}"
 
-def get_news_from_nyt():
+def get_news_from_nyt(number):
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
                             "Accept": "application/json"})
     data = response.json()
 
-    return data['results'][0]
+    return data['results'][number] # first --> 0
 
 
 def return_poem_and_image(news):
@@ -35,3 +35,16 @@ def return_poem_and_image(news):
             json.dump(news_list, file)
 
     return news_list.get(news)
+
+def return_list_of_poems(number):
+    list_of_news = []
+    for article_number in range(number):
+        newest_news = get_news_from_nyt(article_number).get("title") # 0 is the first article
+        news_poems = return_poem_and_image(newest_news)
+        poem = news_poems.get("ai_text")
+        image_url = news_poems.get("image_url")
+        temp_dict = dict(title=newest_news, poem=poem, image_url=image_url)
+        list_of_news.append(temp_dict)
+
+    return list_of_news
+    

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>News as Poems</title>
+</head>
+
+<body>
+    <header>
+        <h1>News as Poetry</h1>
+        <p>These Poems are each based on a different article from the New York Times' front page. Can you guess which
+            one it is?</p>
+    </header>
+    <main>
+        <div class="scrolling-wrapper">
+            {% for ai_news in list_of_news %}
+            <img class="card" width=500 heigth=500 src="{{ai_news.get('image_url')}}" alt="Guess the article">
+            {% endfor %}
+        </div>
+    </main>
+    <style>
+        .scrolling-wrapper {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+
+            .card {
+                display: inline-block;
+            }
+        }
+    </style>
+</body>
+
+<footer>
+    News Headline: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
+    Made with love by holgerkurtz.de
+</footer>
+
+</html>
