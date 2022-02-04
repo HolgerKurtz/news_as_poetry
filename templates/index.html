@@ -11,35 +11,23 @@
 
 <body>
     <header>
-        <h1>News as Poems</h1>
-        <p>News are imporant, but Poems are importanter.</p>
+        <h1>News as Poetry</h1>
+        <p>This Poem is based on an article from the New York Times' front page. Can you guess which one it is?</p>
     </header>
-
-
     <main>
         <section>
-            <figure>
-                <h2> {{newest_news.get('title')}} </h2>
-                <blockquote>
-                    {{news_poems}}
-                </blockquote>
-                <figcaption>
-                    <a href="{{newest_news.get('url')}}">{{newest_news.get('byline')}}</a>
-                </figcaption>
-            </figure>
-        </section>
-        <section>
+            <img width=500 heigth=500 src="{{image_url}}" alt="Guess the article">
+            <br>
             <button>
-                <a href="http://twitter.com/intent/tweet?text={{news_poems}}&url=http://holgerkurtz.de&hashtags=NewsAsPoems"
-                    target="_blank" rel="noopener noreferrer"> Share on Twitter</a>
+                <a href="http://twitter.com/intent/tweet?text={{newest_news.get('title')}}%0A{{newest_news.get('url')}}&hashtags=news_as_poetry"
+                    target="_blank" rel="noopener noreferrer"> Share on Twitter for the solution</a>
             </button>
         </section>
     </main>
-
 </body>
 
 <footer>
-    News: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
+    News Headline: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
     Made with love by holgerkurtz.de
 </footer>
 
