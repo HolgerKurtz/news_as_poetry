@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>News as Poems</title>
+</head>
+
+<body>
+    <header>
+        <h1>News as Poetry</h1>
+        <p>An Ai creates 3 Poems based on a headline from the New York Times' front page. Can you guess the headline?
+        </p>
+    </header>
+    <main>
+        <div class="row">
+            {% for ai_news in list_of_news %}
+            <div class="card">
+                <a id="linkToNYT" href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
+                    <img class="card" width=300 heigth=300 src="{{ai_news.get('image_url')}}" alt="Guess the article">
+                </a>
+                <br>
+                <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
+                    <button>Share Image on Social Media</button></a>
+                <hr>
+            </div>
+            {% endfor %}
+        </div>
+        </section>
+        <section>
+            <h2>
+                Read the real article
+            </h2>
+            <blockquote>
+                <p>
+                    <a href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
+                        <b>{{newest_news.get('title')}}</b>
+                    </a>
+                    <br>
+                    {{newest_news.get('abstract')}}
+                    <br>
+                    – {{newest_news.get('byline')}}
+                </p>
+            </blockquote>
+            <a href="https://twitter.com/intent/tweet?text={{newest_news.get('title')}}&url={{newest_news.get('url')}}"
+                target="_blank" rel="noopener noreferrer">
+                <button>Share article on Twitter</button>
+            </a>
+
+        </section>
+    </main>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script> -->
+</body>
+
+<footer>
+    News Headline: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
+    Made with love by holgerkurtz.de
+</footer>
+
+</html>

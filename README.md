@@ -1,3 +1,6 @@
-# Get Started!
+# News as Poems
 
-Add files and start typing 🎉
+News from the New York Times API, but as poems. Because we can.
+
+
+
