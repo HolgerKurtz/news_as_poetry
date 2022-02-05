@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Poetry Archive</title>
+</head>
+
+<body>
+    <a href="/"><button>Main Page</button></a>
+    {% for headline in news_list %}
+    <h2>Real Headline: <i>{{headline}}</i></h2>
+    <p>Poems by the A.I.:</p>
+    <ol>
+        {% for ai_text in news_list.get(headline) %}
+        <li>{{ai_text.get('ai_text')}}</li>
+        {% endfor %}
+    </ol>
+    {% endfor %}
+</body>
+<footer>
+    News Headline: <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i> <br>
+    Made with love by <a href="https://www.holgerkurtz.de" target="_blank" rel="noopener noreferrer">holgerkurtz.de /
+        Impressum / Datenschutz</a>
+</footer>
+
+</html>

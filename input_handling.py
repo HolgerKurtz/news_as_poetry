@@ -18,7 +18,6 @@ def get_news_from_nyt(number):
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
                             "Accept": "application/json"})
     data = response.json()
-    pprint(data['results'][number].get('title'))
     return data['results'][number] # first --> 0
 
 
