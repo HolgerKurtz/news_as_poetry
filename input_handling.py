@@ -4,6 +4,8 @@ from create_image import generate_image
 import requests
 from dotenv import load_dotenv
 import os
+from pprint import pprint
+import random
 
 load_dotenv()
 # Get most popular articles from NYT API
@@ -16,7 +18,7 @@ def get_news_from_nyt(number):
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
                             "Accept": "application/json"})
     data = response.json()
-
+    pprint(data['results'][number].get('title'))
     return data['results'][number] # first --> 0
 
 
@@ -27,24 +29,30 @@ def return_poem_and_image(news):
     if news in news_list:
         pass
     else:
-        ai_poem = ai_text(news)
-        image_url = generate_image(ai_poem).get('download_url')
-        new_entry = dict(ai_text=ai_poem, image_url=image_url)
-        news_list[news] = new_entry
+        # create a dict like this
+        """
+            {
+                "news": [
+                            {
+                                "ai_text": "test_1",
+                                "image_url": "test_url_1"
+                            },
+                            {
+                                "ai_text": "test_2",
+                                "image_url": "test_url_2"
+                            }
+                        ]
+            }
+        """
+        ai_poem = ai_text(news) # ai_poems = list of strings
+        random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
+        list_of_choices = [] # list of ai choices
+        for poem in ai_poem:
+            poem_and_url_dict = dict(ai_text=poem, image_url=generate_image(poem, random_color).get('download_url'))
+            list_of_choices.append(poem_and_url_dict)
+        news_list[news] =list_of_choices
+
         with open("news.json", "w+") as file:
             json.dump(news_list, file)
 
-    return news_list.get(news)
-
-def return_list_of_poems(number):
-    list_of_news = []
-    for article_number in range(number):
-        newest_news = get_news_from_nyt(article_number).get("title") # 0 is the first article
-        news_poems = return_poem_and_image(newest_news)
-        poem = news_poems.get("ai_text")
-        image_url = news_poems.get("image_url")
-        temp_dict = dict(title=newest_news, poem=poem, image_url=image_url)
-        list_of_news.append(temp_dict)
-
-    return list_of_news
-    
+    return news_list.get(news) # returns list 

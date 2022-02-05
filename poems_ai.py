@@ -16,13 +16,19 @@ def ai_text(news):
         context = file.read()
     input_with_context = context.replace("++NEWS++", news)
     
-    result = openai.Completion.create(
+    multiple_choices = openai.Completion.create(
         engine="text-davinci-001",
         temperature=0.9,
         prompt=input_with_context,
-        max_tokens=200
+        stop="\n---\n",
+        n=3,
+        max_tokens=100
     )
-    return result['choices'][0]['text']
+    list_of_choices = []
+    for text in multiple_choices.get('choices'):
+        list_of_choices.append(text.get('text'))
+    
+    return list_of_choices
 
 
 if __name__ == "__main__":

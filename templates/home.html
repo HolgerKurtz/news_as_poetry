@@ -12,27 +12,47 @@
 <body>
     <header>
         <h1>News as Poetry</h1>
-        <p>These Poems are each based on a different article from the New York Times' front page. Can you guess which
-            one it is?</p>
+        <p>An Ai creates 3 Poems based on a headline from the New York Times' front page. Can you guess the headline?
+        </p>
     </header>
     <main>
-        <div class="scrolling-wrapper">
+        <div class="row">
             {% for ai_news in list_of_news %}
-            <img class="card" width=500 heigth=500 src="{{ai_news.get('image_url')}}" alt="Guess the article">
+            <div class="card">
+                <a id="linkToNYT" href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
+                    <img class="card" width=300 heigth=300 src="{{ai_news.get('image_url')}}" alt="Guess the article">
+                </a>
+                <br>
+                <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
+                    <button>Share Image on Social Media</button></a>
+                <hr>
+            </div>
             {% endfor %}
         </div>
-    </main>
-    <style>
-        .scrolling-wrapper {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
+        </section>
+        <section>
+            <h2>
+                Read the real article
+            </h2>
+            <blockquote>
+                <p>
+                    <a href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
+                        <b>{{newest_news.get('title')}}</b>
+                    </a>
+                    <br>
+                    {{newest_news.get('abstract')}}
+                    <br>
+                    – {{newest_news.get('byline')}}
+                </p>
+            </blockquote>
+            <a href="https://twitter.com/intent/tweet?text={{newest_news.get('title')}}&url={{newest_news.get('url')}}"
+                target="_blank" rel="noopener noreferrer">
+                <button>Share article on Twitter</button>
+            </a>
 
-            .card {
-                display: inline-block;
-            }
-        }
-    </style>
+        </section>
+    </main>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script> -->
 </body>
 
 <footer>
