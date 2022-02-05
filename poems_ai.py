@@ -21,7 +21,7 @@ def ai_text(news):
         temperature=0.9,
         prompt=input_with_context,
         stop="\n---\n",
-        n=3,
+        n=4,
         max_tokens=100
     )
     list_of_choices = []

@@ -26,18 +26,18 @@ def generate_image(text, color):
             "color": "#3D3D3D"
             },
             {
-            "name": "line",
+            "name": "line_1",
             "stroke": "grey",
             "strokeWidth": 3
             },
             {
-            "name": "poetry_1",
-            "text": "Find the real article this poem is based on @news_as_poetry ",
+            "name": "credits",
+            "text": "more news as poetry @news_as_poetry (Instagram)",
             "textBackgroundColor": "rgba(246, 243, 243, 0)",
             "color": "#3D3D3D"
             }
         ]
-    }
+        }
 
     response = requests.post(
         f"https://rest.apitemplate.io/v2/create-image?template_id={TEMPLATE_ID}",
