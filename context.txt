@@ -1,5 +1,4 @@
-Write a poem that rhymes:
-
+Write a poem about 'soft rain' that rhymes
 
 There will come soft rain and the smell of the ground, 
 And swallows circling with their shimmering sound;
@@ -9,6 +8,8 @@ And wild plum trees in tremulous white;
 
 ---
 
+Write a poem about 'war' that rhymes
+
 Robins will wear their feathery fire,
 Whistling their whims on a low fence-wire;
 
@@ -16,6 +17,8 @@ And not one will know of the war, not one
 Will care at last when it is done.
 
 ---
+
+Write a poem about 'Spring' that rhymes
 
 Not one would mind, neither bird nor tree,
 If mankind perished utterly;
@@ -25,4 +28,5 @@ Would scarcely know that we were gone.
 
 ---
 
-++NEWS++
+Write a poem about '++NEWS++' that rhymes
+

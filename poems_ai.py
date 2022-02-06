@@ -21,12 +21,17 @@ def ai_text(news):
         temperature=0.9,
         prompt=input_with_context,
         stop="\n---\n",
-        n=4,
+        n=2,
         max_tokens=100
     )
+    print(input_with_context)
     list_of_choices = []
     for text in multiple_choices.get('choices'):
-        list_of_choices.append(text.get('text'))
+        poem = text.get('text')
+        if poem == "":
+            pass
+        else:
+            list_of_choices.append(poem)
     
     return list_of_choices
 

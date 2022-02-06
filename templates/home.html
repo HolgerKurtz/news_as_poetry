@@ -16,7 +16,7 @@
         <div>
             <h1>News as Poetry from an A.I.</h1>
             <p>
-                An A.I. creates 4 poems based on a headline from the New York Times' front page. Can you guess the
+                An A.I. creates 4 poems based on a headline from the New York Times' arts page. Can you guess the
                 headline?
             </p>
             <a href="https://www.instagram.com/news_as_poetry/" target="_blank" rel="noopener noreferrer">
@@ -29,12 +29,20 @@
         <div class="row">
             {% for ai_news in list_of_news %}
             <div class="card">
+                <!--
                 <a id="linkToNYT" href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
-                    <img class="card" src="{{ai_news.get('image_url')}}" alt="{{newest_news.get('title')}}">
+                    <img class="card" src="{{ai_news.get('image_url')}}" alt="{{ai_news.get('ai_text')}}">
                 </a>
+                <br>
+                -->
+                <i style="white-space: pre-wrap;">
+                    {{ai_news.get('ai_text')}}
+                </i>
+                <!-- 
                 <br>
                 <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
                     <button>Share Image on Social Media</button></a>
+                -->
             </div>
             {% endfor %}
         </div>
