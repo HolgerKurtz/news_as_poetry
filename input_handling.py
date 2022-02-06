@@ -12,7 +12,7 @@ load_dotenv()
 # https://developer.nytimes.com/
 
 API_KEY = os.getenv("NYT_API_KEY")
-TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/home.json?api-key={API_KEY}"
+TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/arts.json?api-key={API_KEY}"
 
 def get_news_from_nyt(number):
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
@@ -47,7 +47,7 @@ def return_poem_and_image(news):
         random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
         list_of_choices = [] # list of ai choices
         for poem in ai_poem:
-            poem_and_url_dict = dict(ai_text=poem, image_url=generate_image(poem, random_color).get('download_url'))
+            poem_and_url_dict = dict(ai_text=poem, image_url=None) #generate_image(poem, random_color).get('download_url'))
             list_of_choices.append(poem_and_url_dict)
         news_list[news] =list_of_choices
 
