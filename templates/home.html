@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='html2canvas.js') }}"> </script>
     <title>News as Poetry</title>
 </head>
 
@@ -26,22 +27,24 @@
     </header>
     <hr>
     <main>
-        <div class="row">
+        <div class="row" id="poems">
             {% for ai_news in list_of_news %}
             <div class="card">
                 <!--
                 <a id="linkToNYT" href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
-                    <img class="card" src="{{ai_news.get('image_url')}}" alt="{{ai_news.get('ai_text')}}">
+                    <img src="{{ai_news.get('image_url')}}" alt="{{ai_news.get('ai_text')}}">
                 </a>
                 <br>
                 -->
-                <i style="white-space: pre-wrap;">
+                <p class="poem_text" style="white-space: pre-wrap;">
                     {{ai_news.get('ai_text')}}
-                </i>
-                <!-- 
+                </p>
+
                 <br>
-                <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
-                    <button>Share Image on Social Media</button></a>
+                <!-- <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
+                    </a>
+       
+                <button onclick="createImage()">Share as Image</button>
                 -->
             </div>
             {% endfor %}
@@ -78,6 +81,20 @@
                 grid-row-gap: 50px;
             }
 
+            .card {
+                background-color: #daba1e;
+                padding: 20px;
+                box-shadow: 0px 0px 10px #000000;
+            }
+
+            .poem_text {
+                background-color: white;
+                color: black;
+                font-family: 'Crimson Pro', serif;
+                padding: 0em 1em 0em;
+                font-size: large;
+            }
+
             .headerImage {
                 display: block;
                 margin: auto;
@@ -89,7 +106,16 @@
             }
         </style>
     </main>
-    <!-- <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script> -->
+
+    <script>
+        function createImage() {
+            html2canvas(document.querySelector("#poems")).then(
+                canvas => {
+                    document.body.appendChild(canvas)
+                });
+        }
+    </script>
+
 </body>
 
 <footer>

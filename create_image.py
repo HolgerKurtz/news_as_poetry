@@ -1,10 +1,14 @@
-import requests, json
+import requests
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 TEMPLATE_API_KEY = os.getenv("TEMPLATE_API_KEY")
 TEMPLATE_ID = os.getenv("TEMPLATE_ID")
+
+# POSTKIT
+POSTKIT_TOKEN = os.getenv("POSTKIT_TOKEN")
+POSTKIT_TEMPLATE_ID = os.getenv("POSTKIT_TEMPLATE_ID")
 
 def generate_image(text, color):
     data = {
@@ -48,7 +52,28 @@ def generate_image(text, color):
     )
     return response.json()
 
-if __name__ == "__main__":
-    url = generate_image("Test").get('download_url')
-    print(url)
+def generate_image_postkit(text):
+    post_url = "https://api.postkit.co/make"
+    data = {
+        "id": POSTKIT_TEMPLATE_ID,
+        "token": POSTKIT_TOKEN,
+        "size": "1080x1080",
+        "params": {
+            "text_background": {
+                "content":text
+            },
+        }
+        }
+    response = requests.post(
+        post_url,
+        json=data
+    )
+    if response.status_code == 200:
+        with open(f"{text}.png", "wb") as file:
+            file.write(response.content)
+    else:
+        print("Error: ", response.status_code)
+        print(response.text)
 
+if __name__ == "__main__":
+    generate_image_postkit("This is a test") # generate_image("Test", "#dfb857").get('download_url')
