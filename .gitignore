@@ -3,3 +3,4 @@ env/
 *.env
 .glitch-assets
 .DS_Store
+*.log
