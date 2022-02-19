@@ -39,10 +39,7 @@ class TextGen():
             "end_sequence" : "---"
         }
         self.options = {'use_cache': False}
-    
-    def __repr__(self) -> str:
-        return f"{self.HUG_API=} {self.API_URL=} {self.headers=} {self.parameters=} {self.options=}"
-    
+         
     def query(self, news):
         info = "Es gab ein technisches Problem. Bitte kontaktieren Sie hk@holgerkurtz.de"
         
