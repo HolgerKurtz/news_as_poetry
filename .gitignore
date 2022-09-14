@@ -4,3 +4,6 @@ env/
 .glitch-assets
 .DS_Store
 *.log
+*.pxd
+*.jpeg
+*.png
