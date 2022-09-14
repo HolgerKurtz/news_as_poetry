@@ -71,9 +71,12 @@ def generate_image_postkit(text):
     if response.status_code == 200:
         with open(f"{text}.png", "wb") as file:
             file.write(response.content)
+        return f"{text}.png"
     else:
         print("Error: ", response.status_code)
         print(response.text)
+        return None
 
 if __name__ == "__main__":
-    generate_image_postkit("This is a test") # generate_image("Test", "#dfb857").get('download_url')
+    generate_image_postkit("This is a test") 
+    generate_image("Test", "#dfb857").get('download_url')
