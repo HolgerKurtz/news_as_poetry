@@ -97,7 +97,7 @@ def create_ai_image(text_prompt, additional_info=None): # for ideas like ', digi
     )
     # the object returned is a python generator
     answers = stability_api.generate(
-        prompt=f"{text_prompt} {additional_info}"
+        prompt=f"{text_prompt}, {additional_info}"
         # seed=34567, # if provided, specifying a random seed makes results deterministic
         # steps=30, # defaults to 50 if not specified
     )
