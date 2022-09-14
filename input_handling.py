@@ -1,6 +1,6 @@
 import json
 from poems_ai import ai_text
-from create_image import generate_image
+from create_image import generate_image, create_ai_image
 import requests
 from dotenv import load_dotenv
 import os
@@ -21,7 +21,7 @@ def get_news_from_nyt(number, section="home"):
         pass
     else:
         section = "home" # default
-        
+
     TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/{section}.json?api-key={API_KEY}"
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
                             "Accept": "application/json"})
@@ -55,7 +55,8 @@ def return_poem_and_image(news):
         random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
         list_of_choices = [] # list of ai choices
         for poem in ai_poem:
-            poem_and_url_dict = dict(ai_text=poem, image_url=None) #generate_image(poem, random_color).get('download_url'))
+            poem_and_url_dict = dict(ai_text=poem, image_url=create_ai_image(news)) # create_ai_image("a bestseller book, digital art") or generate_image(poem, random_color).get('download_url'))
+            print(poem_and_url_dict)
             list_of_choices.append(poem_and_url_dict)
         news_list[news] =list_of_choices
 
@@ -63,3 +64,7 @@ def return_poem_and_image(news):
             json.dump(news_list, file)
 
     return news_list.get(news) # returns list 
+
+if __name__ == "__main__":
+    test = return_poem_and_image("a wonderful christmas day in new york")
+    print(test)

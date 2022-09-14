@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
-    <script type="text/javascript" src="{{ url_for('static', filename='html2canvas.js') }}"> </script>
     <title>News as Poetry</title>
 </head>
 
@@ -30,22 +29,19 @@
         <div class="row" id="poems">
             {% for ai_news in list_of_news %}
             <div class="card">
-                <!--
+                <h2>
+                    Cover Image, painted by an AI
+                </h2>
                 <a id="linkToNYT" href="{{newest_news.get('url')}}" target="_blank" rel="noopener noreferrer">
-                    <img src="{{ai_news.get('image_url')}}" alt="{{ai_news.get('ai_text')}}">
+                    <img src="{{ url_for('static', filename='')}}{{ai_news.get('image_url') }}" alt="{{ai_news.get('image_url')}}">
                 </a>
+            </div>
+            <div class="card">
                 <br>
-                -->
                 <p class="poem_text" style="white-space: pre-wrap;">
                     {{ai_news.get('ai_text')}}
                 </p>
-
                 <br>
-                <!-- <a href="{{ai_news.get('image_url')}}" target="_blank" rel="noopener noreferrer">
-                    </a>
-       
-                <button onclick="createImage()">Share as Image</button>
-                -->
             </div>
             {% endfor %}
         </div>
@@ -106,16 +102,6 @@
             }
         </style>
     </main>
-
-    <script>
-        function createImage() {
-            html2canvas(document.querySelector("#poems")).then(
-                canvas => {
-                    document.body.appendChild(canvas)
-                });
-        }
-    </script>
-
 </body>
 
 <footer>

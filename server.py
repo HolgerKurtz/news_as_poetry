@@ -13,6 +13,7 @@ def section(nyt_section):
     newest_news = get_news_from_nyt(0, nyt_section) # 0 is the first article
     print(newest_news.get('title'))
     news_poems = return_poem_and_image(newest_news.get("title"))
+    print(news_poems)
     return render_template("section.html", newest_news=newest_news, list_of_news=news_poems)
 
 @app.route("/archive", methods=["GET"])
