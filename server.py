@@ -6,11 +6,14 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    newest_news = get_news_from_nyt(0) # 0 is the first article
+    return render_template("home.html")
+
+@app.route("/<string:nyt_section>", methods=["GET"])
+def section(nyt_section):
+    newest_news = get_news_from_nyt(0, nyt_section) # 0 is the first article
     print(newest_news.get('title'))
     news_poems = return_poem_and_image(newest_news.get("title"))
-    print(news_poems)
-    return render_template("home.html", newest_news=newest_news, list_of_news=news_poems)
+    return render_template("section.html", newest_news=newest_news, list_of_news=news_poems)
 
 @app.route("/archive", methods=["GET"])
 def archive():

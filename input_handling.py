@@ -12,9 +12,17 @@ load_dotenv()
 # https://developer.nytimes.com/
 
 API_KEY = os.getenv("NYT_API_KEY")
-TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/arts.json?api-key={API_KEY}"
 
-def get_news_from_nyt(number):
+def get_news_from_nyt(number, section="home"):
+    NYT_SECTIONS = ["home", "arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sports", "sundayreview", "technology", "theater", "t-magazine", "travel", "upshot", "us", "world"]
+
+    # check if section is valid
+    if section in NYT_SECTIONS:
+        pass
+    else:
+        section = "home" # default
+        
+    TOP_STORY_HOMEPAGE_URL = f"https://api.nytimes.com/svc/topstories/v2/{section}.json?api-key={API_KEY}"
     response = requests.get(TOP_STORY_HOMEPAGE_URL, headers={
                             "Accept": "application/json"})
     data = response.json()
