@@ -1,6 +1,15 @@
+from cgitb import text
 import requests
 from dotenv import load_dotenv
 import os
+import warnings
+
+# AI IMAGE PART
+from stability_sdk import client
+import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
+from PIL import Image
+import io
+import uuid
 
 load_dotenv()
 TEMPLATE_API_KEY = os.getenv("TEMPLATE_API_KEY")
@@ -77,6 +86,34 @@ def generate_image_postkit(text):
         print(response.text)
         return None
 
+def create_ai_image(text_prompt, additional_info=None): # for ideas like ', digital art'
+    """
+    Takes Prompt and uses stability sdk / API to create an image
+    """
+    image_folder = "images/"
+    stability_api = client.StabilityInference(
+        key=os.environ['STABILITY_KEY'], 
+        verbose=True,
+    )
+    # the object returned is a python generator
+    answers = stability_api.generate(
+        prompt=f"{text_prompt} {additional_info}"
+        # seed=34567, # if provided, specifying a random seed makes results deterministic
+        # steps=30, # defaults to 50 if not specified
+    )
+    for resp in answers:
+        for artifact in resp.artifacts:
+            if artifact.finish_reason == generation.FILTER:
+                warnings.warn(
+                    "Your request activated the API's safety filters and could not be processed."
+                    "Please modify the prompt and try again.")
+            if artifact.type == generation.ARTIFACT_IMAGE:
+                img = Image.open(io.BytesIO(artifact.binary))
+                img_name = str(uuid.uuid1())
+                image_path = f"{image_folder}{img_name}.jpg" # images/text_prompt.jpg # for flask 
+                img.save(f"static/{image_path}") #static/images/text_prompt.jpg 
+    return image_path
 if __name__ == "__main__":
-    generate_image_postkit("This is a test") 
-    generate_image("Test", "#dfb857").get('download_url')
+    # generate_image_postkit("This is a test") 
+    # generate_image("Test", "#dfb857").get('download_url')
+    print(create_ai_image("a bestseller book, digital art"))
