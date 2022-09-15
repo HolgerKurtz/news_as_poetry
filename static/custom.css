@@ -1,0 +1,38 @@
+/* Grid Part */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+}
+
+.card {
+  background-color: #daba1e;
+  padding: 20px;
+  box-shadow: 0px 0px 10px #000000;
+}
+
+.poem_text {
+  background-color: white;
+  color: black;
+  font-family: "Crimson Pro", serif;
+  padding: 0em 1em 0em;
+  font-size: large;
+  white-space: pre-wrap;
+}
+
+.headerImage {
+  display: block;
+  margin: auto;
+  width: 30%;
+}
+
+hr {
+  padding-bottom: 20px;
+}
+
+h3 {
+  background-color: white;
+  color: black;
+}

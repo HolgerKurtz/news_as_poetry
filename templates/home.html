@@ -8,6 +8,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='custom.css') }}"
+    />
     <title>News as Poetry</title>
   </head>
 
@@ -32,41 +37,7 @@
         </a>
       </div>
     </header>
-    <main>
-      <style>
-        .row {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          grid-template-rows: 1fr;
-          grid-column-gap: 50px;
-          grid-row-gap: 50px;
-        }
-
-        .card {
-          background-color: #daba1e;
-          padding: 20px;
-          box-shadow: 0px 0px 10px #000000;
-        }
-
-        .poem_text {
-          background-color: white;
-          color: black;
-          font-family: "Crimson Pro", serif;
-          padding: 0em 1em 0em;
-          font-size: large;
-        }
-
-        .headerImage {
-          display: block;
-          margin: auto;
-          width: 30%;
-        }
-
-        hr {
-          padding-bottom: 20px;
-        }
-      </style>
-    </main>
+    <main></main>
   </body>
 
   <footer>

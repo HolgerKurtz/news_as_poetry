@@ -55,7 +55,7 @@ def return_poem_and_image(news):
         random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
         list_of_choices = [] # list of ai choices
         for poem in ai_poem:
-            poem_and_url_dict = dict(ai_text=poem, image_url=create_ai_image(news, "oil painting from 1800")) # create_ai_image("a bestseller book, digital art") or generate_image(poem, random_color).get('download_url'))
+            poem_and_url_dict = dict(ai_text=poem, image_url=create_ai_image(news, "highly detailed oil painting")) # create_ai_image("a bestseller book, digital art") or generate_image(poem, random_color).get('download_url'))
             print(poem_and_url_dict)
             list_of_choices.append(poem_and_url_dict)
         news_list[news] =list_of_choices

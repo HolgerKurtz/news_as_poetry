@@ -7,6 +7,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='custom.css') }}"
+    />
     <title>Poetry Archive</title>
   </head>
 
@@ -14,16 +19,19 @@
     <a href="/"><button>Main Page</button></a>
     {% for headline in news_list %}
     <h2>Real Headline: <i>{{headline}}</i></h2>
-    <p>Poems by the A.I.:</p>
-    <ol>
+    <div class="row">
       {% for ai_text in news_list.get(headline) %}
-      <img
-        src="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
-        alt="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
-      />
-      <li>{{ai_text.get('ai_text')}}</li>
+      <div class="card">
+        <img
+          src="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
+          alt="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
+        />
+      </div>
+      <div class="card">
+        <p class="poem_text">{{ai_text.get('ai_text')}}</p>
+      </div>
       {% endfor %}
-    </ol>
+    </div>
     {% endfor %}
   </body>
   <footer>
