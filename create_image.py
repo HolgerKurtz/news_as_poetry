@@ -116,4 +116,4 @@ def create_ai_image(text_prompt, additional_info=None): # for ideas like ', digi
 if __name__ == "__main__":
     # generate_image_postkit("This is a test") 
     # generate_image("Test", "#dfb857").get('download_url')
-    print(create_ai_image("a bestseller book, digital art"))
+    print(create_ai_image("a bestseller book", "digital art"))

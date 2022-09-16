@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 from pprint import pprint
 import random
+from random import choice
 
 load_dotenv()
 # Get most popular articles from NYT API
@@ -52,10 +53,12 @@ def return_poem_and_image(news):
             }
         """
         ai_poem = ai_text(news) # ai_poems = list of strings
-        random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
+        # random_color = "#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])
         list_of_choices = [] # list of ai choices
+        image_styles = ["highly detailed oil painting", "digital art", "drawn with a pencil", "pastel painting"]
+        chosen_image_style = choice(image_styles)
         for poem in ai_poem:
-            poem_and_url_dict = dict(ai_text=poem, image_url=create_ai_image(news, "highly detailed oil painting")) # create_ai_image("a bestseller book, digital art") or generate_image(poem, random_color).get('download_url'))
+            poem_and_url_dict = dict(ai_text=poem, image_url=create_ai_image(news, chosen_image_style)) # create_ai_image("a bestseller book, digital art") or generate_image(poem, random_color).get('download_url'))
             print(poem_and_url_dict)
             list_of_choices.append(poem_and_url_dict)
         news_list[news] =list_of_choices
