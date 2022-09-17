@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"
@@ -13,33 +12,28 @@
       type="text/css"
       href="{{ url_for('static', filename='custom.css') }}"
     />
-    <title>News as Poetry</title>
+    <title>Poetry Archive</title>
   </head>
 
   <body>
-    <header class="row">
-      <img
-        class="headerImage"
-        src="https://cdn.glitch.global/1f15f464-cfd6-4e0e-b067-ed3c12dcbab1/profile-pic.png?v=1644072520480"
-      />
-      <div>
-        <h1>News as Poetry from an A.I.</h1>
-        <p>
-          An A.I. creates a poem based on a headline from the New York Times.
-          Can you guess the real headline?
-        </p>
-        <a
-          href="https://www.instagram.com/news_as_poetry/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <button>Daily Poem on Insta</button>
-        </a>
+    <a href="/"><button>Main Page</button></a>
+    {% for headline in news_list %}
+    <h2>Real Headline: <i>{{headline}}</i></h2>
+    <div class="row">
+      {% for ai_text in news_list.get(headline) %}
+      <div class="card">
+        <img
+          src="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
+          alt="{{ url_for('static', filename='')}}{{ai_text.get('image_url') }}"
+        />
       </div>
-    </header>
-    <main></main>
+      <div class="card">
+        <p class="poem_text">{{ai_text.get('ai_text')}}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
   </body>
-
   <footer>
     News Headline:
     <i>Copyright (c) 2022 The New York Times Company. All Rights Reserved.</i>
@@ -51,7 +45,5 @@
       rel="noopener noreferrer"
       >holgerkurtz.de / Impressum / Datenschutz</a
     >
-    <br />
-    <a href="/archive"><button>See all Poems</button></a>
   </footer>
 </html>
