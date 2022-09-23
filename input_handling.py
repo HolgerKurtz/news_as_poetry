@@ -15,7 +15,7 @@ load_dotenv()
 API_KEY = os.getenv("NYT_API_KEY")
 
 def get_news_from_nyt(number, section="home"):
-    NYT_SECTIONS = ["home", "arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sports", "sundayreview", "technology", "theater", "t-magazine", "travel", "upshot", "us", "world"]
+    NYT_SECTIONS = ["home", "arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "nyregion", "obituaries", "opinion", "politics", "realestate", "science", "sports", "sundayreview", "technology", "theater", "t-magazine", "upshot", "us", "world"]
 
     # check if section is valid
     if section in NYT_SECTIONS:
@@ -69,5 +69,5 @@ def return_poem_and_image(news):
     return news_list.get(news) # returns list 
 
 if __name__ == "__main__":
-    test = return_poem_and_image("a wonderful christmas day in new york")
-    print(test)
+    headline = get_news_from_nyt(0, section="travel")
+    print(headline.get("title"))
