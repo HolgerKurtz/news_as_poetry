@@ -11,12 +11,16 @@ def main():
         print(f"NYT API: \n{newest_news}")
         headline = newest_news.get('title')
         print(f"{headline} // aus {chosen_section}")
-        news_poems = return_poem_and_image(headline)
-        recent_poem = news_poems[0] # {'ai_text': '\n\nThey were at work this day in the East,And work had commenced in the West,\n', 'image_url': 'images/7941d4b4-3510-11ed-9014-228e44f4b507.jpg'}
-        CAPTION = f"–\n{recent_poem.get('ai_text')}\n---\nIMAGE & POEM are created by AI.\nAnd based on this @nytimes HEADLINE:\n\n{headline}\n #AIimage #AIpoetry #nytimes #{chosen_section}"
-        IMAGE = f"static/{recent_poem.get('image_url')}"
-        post_insta_pic(IMAGE, CAPTION)
-        print(f"POSTED ON: https://www.instagram.com/news_as_poetry/")
+        user_posten = input("AI Art generieren? (y/n): ")
+        if user_posten == "y":
+            news_poems = return_poem_and_image(headline)
+            recent_poem = news_poems[0] # {'ai_text': '\n\nThey were at work this day in the East,And work had commenced in the West,\n', 'image_url': 'images/7941d4b4-3510-11ed-9014-228e44f4b507.jpg'}
+            CAPTION = f"–\n{recent_poem.get('ai_text')}\n---\nIMAGE & POEM are created by AI.\nAnd based on this @nytimes HEADLINE:\n\n{headline}\n #AIimage #AIpoetry #nytimes #{chosen_section}"
+            IMAGE = f"static/{recent_poem.get('image_url')}"
+            post_insta_pic(IMAGE, CAPTION)
+            print(f"POSTED ON: https://www.instagram.com/news_as_poetry/")
+        else:
+            print("Starte das Programm erneut")
     except Exception as e:
         print(e)
 
