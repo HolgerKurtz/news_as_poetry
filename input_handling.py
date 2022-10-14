@@ -69,5 +69,5 @@ def return_poem_and_image(news):
     return news_list.get(news) # returns list 
 
 if __name__ == "__main__":
-    headline = get_news_from_nyt(0, section="travel")
-    print(headline.get("title"))
+    x = return_poem_and_image("Under the Skin of Jamie Lee Curtis")
+    print(x)

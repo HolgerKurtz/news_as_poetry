@@ -18,11 +18,11 @@ def main():
             CAPTION = f"–\n{recent_poem.get('ai_text')}\n---\nIMAGE & POEM are created by AI.\nAnd based on this @nytimes HEADLINE:\n\n{headline}\n\n #AIimage #AIpoetry #nytimes #{chosen_section}"
             IMAGE = f"static/{recent_poem.get('image_url')}"
             post_insta_pic(IMAGE, CAPTION)
-            print(f"POSTED ON: https://www.instagram.com/news_as_poetry/")
+            print(f"open https://www.instagram.com/news_as_poetry/")
         else:
             print("Starte das Programm erneut")
     except Exception as e:
-        print(e)
+        print(f"EXCEPTION: \n{e}")
 
 
 if __name__ == "__main__":
